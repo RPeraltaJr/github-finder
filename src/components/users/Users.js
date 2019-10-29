@@ -29,9 +29,8 @@ class Users extends Component {
         return (
             <div className="container mt-3">
                 <div className="row">
-
                     {/* Rendering the child component multiple times */}
-                    { this.state.users.map(user => (
+                    { this.props.users.map(user => (
                         <UserItem key={user.id} user={user} />
                     )) }
 
