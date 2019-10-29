@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <Users users={this.state.users} />
+        <Users loading={this.state.loading} users={this.state.users} />
       </div>
     );
   }
