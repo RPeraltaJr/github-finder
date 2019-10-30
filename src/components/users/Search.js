@@ -7,7 +7,9 @@ class Search extends Component {
     }
 
     static propTypes = {
-        searchUsers: PropTypes.func.isRequired
+        searchUsers: PropTypes.func.isRequired,
+        clearUsers: PropTypes.func.isRequired,
+        showClear: PropTypes.bool.isRequired
     }
 
     // name of input field is the same as what we're updating within State, hence we use [e.target.name]
@@ -19,8 +21,10 @@ class Search extends Component {
         this.setState({ search: '' }); // empty the form after submit
     }
 
-
     render() {
+
+        const { showClear, clearUsers } = this.props;
+
         return (
             <div>
                 <div className="container mt-3">
@@ -33,7 +37,8 @@ class Search extends Component {
                                         <input type="search" name="search" className="form-control" placeholder="Search Users..." value={this.state.search} onChange={this.onChange} />
                                     </div>
                                     <div className="col-6">
-                                        <button type="submit" className="btn btn-info mb-2">Submit</button>
+                                        <button type="submit" className="btn btn-info mb-2 mr-2">Submit</button>
+                                        { showClear && <button className="btn btn-default mb-2" onClick={clearUsers} >Clear</button> }
                                     </div>
                                 </div>
                             </form>
