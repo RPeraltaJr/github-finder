@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import './Navbar.scss';
 
 // const Navbar = (props) => { 
 const Navbar = ({ title, icon }) => { 
@@ -7,8 +9,16 @@ const Navbar = ({ title, icon }) => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <h1 className="navbar-brand mb-0">
-          <span className={`${icon} mr-1`}></span> { title }
+            <span className={`${icon} mr-1`}></span> { title }
         </h1>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <Link to="/">Home</Link>
+          </li>
+          <li class="nav-item">
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
       </div>
     </nav>
   )

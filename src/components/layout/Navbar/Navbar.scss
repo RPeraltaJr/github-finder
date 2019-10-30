@@ -1,0 +1,21 @@
+.navbar {
+    a {
+        text-decoration: none;
+    }
+    &-nav {
+        flex-direction: row;
+    }
+    .nav-item {
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+        a {
+            color: #aaa;
+            &:hover,
+            &:target,
+            &:active {
+                color: white;
+            }
+        }
+    }
+}
