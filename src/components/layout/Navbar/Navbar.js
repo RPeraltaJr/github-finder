@@ -11,11 +11,11 @@ const Navbar = ({ title, icon }) => {
         <h1 className="navbar-brand mb-0">
             <span className={`${icon} mr-1`}></span> { title }
         </h1>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
             <Link to="/">Home</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <Link to="/about">About</Link>
           </li>
         </ul>
