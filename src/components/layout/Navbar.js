@@ -7,7 +7,7 @@ const Navbar = ({ title, icon }) => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <h1 className="navbar-brand mb-0">
-          <span className={ icon + ' mr-1' }></span> { title }
+          <span className={`${icon} mr-1`}></span> { title }
         </h1>
       </div>
     </nav>

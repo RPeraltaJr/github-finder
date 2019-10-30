@@ -10,7 +10,7 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
             <div className="card text-center">
                 <div className="card-body">
                     <img src={ avatar_url } alt={ login } className="rounded-circle mb-1" style={{ width: '70px' }} />
-                    <h4>{ login }</h4>
+                    <h5>{ login }</h5>
                     <div>
                         <a href={ html_url } className="btn btn-success btn-sm mt-1" target="_blank" rel="noopener noreferrer">View Profile</a>
                     </div>
