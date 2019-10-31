@@ -13,7 +13,7 @@ class App extends Component {
 
   state = {
     users: [],
-    user: [],
+    user: {},
     loading: false,
     alert: null
   }
@@ -65,6 +65,7 @@ class App extends Component {
 
             <Route exact path='/about' component={About} />
             <Route exact path='/user/:login' render={props => (
+              // Use { ...props } to get (allow) params value
               <User { ...props } getUser={this.getUser} user={user} loading={loading} />
             )} />
 
