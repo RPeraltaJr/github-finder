@@ -2,17 +2,22 @@ import React, { Component, Fragment } from 'react'
 import Spinner from './../layout/Spinner/Spinner';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Repos from './../repos/Repos';
+import './User.scss';
 
 export class User extends Component {
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.login) // params (:login)
+        this.props.getUserRepos(this.props.match.params.login) // params (:login)
     }
 
     static propTypes = {
         loading: PropTypes.bool,
         user: PropTypes.object.isRequired,
-        getUser: PropTypes.func.isRequired
+        repos: PropTypes.array.isRequired,
+        getUser: PropTypes.func.isRequired,
+        getUserRepos: PropTypes.func.isRequired
     }
 
     render() {
@@ -32,7 +37,7 @@ export class User extends Component {
             hireable
         } = this.props.user;
 
-        const { loading } = this.props;
+        const { loading, repos } = this.props;
 
         if( loading ) return <Spinner />
 
@@ -52,7 +57,7 @@ export class User extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col col-12 col-lg-5 mb-3">
+                    <div className="col col-12 col-lg-5 mb-4">
                         <div className="card">
                             <div className="card-body text-center">
                                 <img src={avatar_url} alt={`${name} avatar`} className="rounded-circle mb-3" style={{ width: '150px' }} />
@@ -61,7 +66,7 @@ export class User extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col col-12 col-lg-7 mb-3">
+                    <div className="col col-12 col-lg-7 mb-4">
                         <div className="card">
                             <div className="card-body">
 
@@ -102,16 +107,18 @@ export class User extends Component {
                         </div>
                     </div>
 
-                    <div className="col col-12 mb-3">
+                    <div className="col col-12 mb-4">
                         <div className="card">
                             <div className="card-body text-center">
                                 <div className="badge badge-primary mr-1">Followers: { followers }</div>
                                 <div className="badge badge-success mr-1">Following: { following }</div>
-                                <div className="badge badge-secondary mr-1">Public Repos: { public_repos }</div>
+                                <div className="badge badge-info mr-1">Public Repos: { public_repos }</div>
                                 <div className="badge badge-danger mr-1">Public Gists: { public_gists }</div>
                             </div>
                         </div>
                     </div>
+
+                    <Repos repos={repos} />
 
                 </div>
             </div>
