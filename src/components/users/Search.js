@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
+const Search = ({ searchUsers, showClear, clearUsers, showAlert }) => {
     const [ search, setSearch ] = useState('');
 
     const onChange = e => setSearch( e.target.value ); 
@@ -9,7 +9,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         if( search === '' ) {
-            setAlert('Please enter something.', 'danger');
+            showAlert('Please enter something.', 'danger');
         } else {
             searchUsers(search); // passing up the value through props
             setSearch(''); // empty the form after submit
@@ -45,7 +45,7 @@ Search.propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
     showClear: PropTypes.bool.isRequired,
-    setAlert: PropTypes.func.isRequired
+    showAlert: PropTypes.func.isRequired
 }
 
 export default Search
