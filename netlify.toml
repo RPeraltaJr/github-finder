@@ -1,0 +1,2 @@
+[build]
+    publish="build" # specify build folder (React calls it 'build')
