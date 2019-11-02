@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import Navbar from './components/layout/Navbar/Navbar';
 import Users from './components/users/Users';
 import './App.scss';
@@ -7,42 +7,37 @@ import Alert from './components/layout/Alert/Alert';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './components/pages/About';
 import User from './components/users/User';
+
 import GithubState from './context/github/GithubState';
+import AlertState from './context/alert/AlertState';
 
 const App = () => { 
 
-  const [alert, setAlert] = useState(null);
-
-  // * Set Alert
-  const showAlert = (msg, type) => {
-    setAlert({ msg, type });
-    // this.setState({ alert: { msg: msg, type: type }});
-    setTimeout(() => setAlert(null), 5000);
-  }
-
   return (
     <GithubState>
-      <Router>
-        <div>
-          <Navbar />
-          <Alert alert={alert} />
+      <AlertState>
+        <Router>
+          <div>
+            <Navbar />
+            <Alert />
 
-          <Switch>
+            <Switch>
 
-            <Route exact path='/' render={props => (
-              <Fragment>
-                <Search showAlert={showAlert} />
-                <Users />
-              </Fragment>
-            )} />
+              <Route exact path='/' render={props => (
+                <Fragment>
+                  <Search />
+                  <Users />
+                </Fragment>
+              )} />
 
-            <Route exact path='/about' component={About} />
-            <Route exact path='/user/:login' component={User} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/user/:login' component={User} />
 
-          </Switch>  
+            </Switch>  
 
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </AlertState>
     </GithubState>
   );
   

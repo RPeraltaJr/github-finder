@@ -1,19 +1,22 @@
 import React, { useState, useContext } from 'react'
-import PropTypes from 'prop-types'
-import GithubContext from './../../context/github/githubContext';
+import GithubContext from './../../context/github/githubContext'; 
+import AlertContext from './../../context/alert/alertContext'; 
 
-const Search = ({ showClear, clearUsers, showAlert }) => {
+const Search = () => {
 
     const githubContext = useContext(GithubContext);
+    const alertContext = useContext(AlertContext);
 
+    // state hook
     const [ search, setSearch ] = useState('');
 
+    // data binding
     const onChange = e => setSearch( e.target.value ); 
 
     const onSubmit = (e) => {
         e.preventDefault();
         if( search === '' ) {
-            showAlert('Please enter something.', 'danger');
+            alertContext.setAlert('Please enter something.', 'danger');
         } else {
             githubContext.searchUsers(search); // passing up the value through props
             setSearch(''); // empty the form after submit
@@ -43,10 +46,6 @@ const Search = ({ showClear, clearUsers, showAlert }) => {
         </div>
     )
 
-}
-
-Search.propTypes = {
-    showAlert: PropTypes.func.isRequired
 }
 
 export default Search
