@@ -14,32 +14,32 @@ export default (state, action) => {
                 ...state,
                 users: action.payload,
                 loading: false
-            }
+            };
         case GET_USER:
             return {
                 // * makes a copy of the state, followed by any updates (additions)
                 ...state,
                 user: action.payload,
                 loading: false
-            }
+            };
+        case CLEAR_USERS:
+            return {
+                ...state, 
+                users: [],
+                loading: false
+            };
+        case SET_LOADING:
+            return {
+                ...state, 
+                loading: true
+            };
         case GET_REPOS:
             return {
                 // * makes a copy of the state, followed by any updates (additions)
                 ...state,
                 repos: action.payload,
                 loading: false
-            }
-        case SET_LOADING:
-            return {
-                ...state, 
-                loading: true
-            }
-        case CLEAR_USERS:
-            return {
-                ...state, 
-                users: [],
-                loading: false,
-            }
+            };
         default: 
             return state
     }

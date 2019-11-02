@@ -7,7 +7,7 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
 
     // const { login, avatar_url, html_url } = props.user;
     return (
-        <div className="col col-lg-3 col-12 mb-3">
+        <div className="col col-lg-3 col-sm-6 col-12 mb-3">
             <div className="card text-center">
                 <div className="card-body">
                     <img src={ avatar_url } alt={ login } className="rounded-circle mb-1" style={{ width: '70px' }} />
